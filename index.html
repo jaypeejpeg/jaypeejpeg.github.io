@@ -7,7 +7,7 @@
   <meta name="description" content="JPEG, the photography club. Event coverage, photo archives, and the people behind the lens.">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="home">
   <nav class="nav">
     <a href="index.html" class="nav-logo">JPEG</a>
     <div class="nav-links">
@@ -18,16 +18,22 @@
   </nav>
 
   <header class="hero">
-    <h1>JPEG</h1>
-    <p class="tagline">The photography club. We shoot everything.</p>
-    <div class="hero-actions">
-      <a href="events.html" class="btn">Browse Event Photos</a>
-      <a href="team.html" class="btn btn-outline">Meet the Team</a>
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h1 class="hero-title" aria-label="JPEG">
+        <span>J</span><span>P</span><span>E</span><span>G</span>
+      </h1>
+      <p class="tagline">Covering Jaypee since 2016</p>
+      <div class="hero-actions">
+        <a href="events.html" class="btn">Browse Event Photos</a>
+        <a href="team.html" class="btn btn-outline">Meet the Team</a>
+      </div>
     </div>
+    <a href="#latest" class="scroll-hint" aria-label="Scroll down">⌄</a>
   </header>
 
   <main class="container">
-    <section class="home-section">
+    <section class="home-section" id="latest">
       <h2>Latest Events</h2>
       <div id="latest-events" class="card-grid"></div>
       <p class="center"><a href="events.html" class="btn btn-outline">All events →</a></p>

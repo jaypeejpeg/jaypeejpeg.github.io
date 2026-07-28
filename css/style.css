@@ -165,7 +165,10 @@ h1, h2, h3, .nav-logo {
 @keyframes caret { 50% { border-color: transparent; } }
 
 .hero-cta {
-  display: inline-block;
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 1.8rem;
   padding: 0.8rem 1.6rem;
   background: var(--accent);

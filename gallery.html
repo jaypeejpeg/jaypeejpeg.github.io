@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — JPEG</title>
+  <meta name="description" content="Browse and download photos from JPEG's event coverage.">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">JPEG</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="events.html" class="active">Events</a>
+      <a href="team.html">Team</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb"></nav>
+
+    <div class="gallery-head">
+      <h1 class="page-title" id="gallery-title">Gallery</h1>
+      <div class="gallery-actions" id="gallery-actions"></div>
+    </div>
+
+    <div id="gallery-body">
+      <p class="empty-note">Loading photos…</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <img src="images/jpeg-logo-white.png" alt="JPEG logo" class="footer-logo">
+    <p>© <span id="year"></span> JPEG Photography Club</p>
+  </footer>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <div class="lightbox-bar">
+      <span class="lightbox-count" id="lightbox-count"></span>
+      <div class="lightbox-tools">
+        <a class="icon-btn" id="lightbox-download" href="#" aria-label="Download original">↓</a>
+        <button class="icon-btn" id="lightbox-close" aria-label="Close">✕</button>
+      </div>
+    </div>
+    <button class="lightbox-nav prev" id="lightbox-prev" aria-label="Previous photo">‹</button>
+    <img class="lightbox-img" id="lightbox-img" alt="">
+    <button class="lightbox-nav next" id="lightbox-next" aria-label="Next photo">›</button>
+    <p class="lightbox-name" id="lightbox-name"></p>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/drive.js"></script>
+  <script src="js/gallery.js"></script>
+</body>
+</html>

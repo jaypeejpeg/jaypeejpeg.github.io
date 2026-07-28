@@ -27,6 +27,16 @@ function reveal(el) {
   return el;
 }
 
+// Points a link at the on-site gallery, or straight at Drive when the gallery
+// is switched off (no API key configured).
+function linkToPhotos(a, ev) {
+  a.href = photosUrl(ev.drive, ev.name);
+  if (!DRIVE.enabled()) {
+    a.target = "_blank";
+    a.rel = "noopener";
+  }
+}
+
 function eventCard(ev) {
   const card = document.createElement("article");
   card.className = "card";
@@ -51,10 +61,8 @@ function eventCard(ev) {
 
   const link = document.createElement("a");
   link.className = "btn";
-  link.href = ev.drive;
-  link.target = "_blank";
-  link.rel = "noopener";
   link.textContent = "View Photos";
+  linkToPhotos(link, ev);
 
   body.append(chip, title, link);
   card.append(cover, body);
@@ -64,9 +72,7 @@ function eventCard(ev) {
 function featuredCard(ev, labelText) {
   const card = document.createElement("a");
   card.className = "featured-card";
-  card.href = ev.drive;
-  card.target = "_blank";
-  card.rel = "noopener";
+  linkToPhotos(card, ev);
 
   if (ev.cover) {
     card.appendChild(
@@ -124,10 +130,8 @@ function hitRow(ev, position) {
 
   const media = document.createElement("a");
   media.className = "hit-media";
-  media.href = ev.drive;
-  media.target = "_blank";
-  media.rel = "noopener";
   media.setAttribute("aria-label", `${ev.name} photos`);
+  linkToPhotos(media, ev);
 
   if (ev.cover) {
     media.appendChild(
@@ -154,10 +158,8 @@ function hitRow(ev, position) {
 
   const link = document.createElement("a");
   link.className = "btn";
-  link.href = ev.drive;
-  link.target = "_blank";
-  link.rel = "noopener";
   link.textContent = "View Photos →";
+  linkToPhotos(link, ev);
 
   text.append(rank, chip, title, link);
   row.append(media, text);
@@ -223,6 +225,15 @@ async function init() {
         if (hero) {
           bannerEl.appendChild(featuredCard(hero, "Latest ★"));
           show("banner-section");
+
+          // The hero button is written into the HTML pointing at Drive; send it
+          // to the on-site gallery once that is available.
+          const cta = document.getElementById("hero-cta");
+          if (cta && DRIVE.enabled()) {
+            cta.href = photosUrl(hero.drive, hero.name);
+            cta.removeAttribute("target");
+            cta.removeAttribute("rel");
+          }
         }
       }
 

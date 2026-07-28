@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Sample Event — Annual Fest",
+    "date": "2026-03-14",
+    "blurb": "Placeholder event. Replace this with a real one.",
+    "cover": "",
+    "drive": "https://drive.google.com/"
+  },
+  {
+    "name": "Sample Event — Freshers Night",
+    "date": "2025-09-02",
+    "blurb": "Another placeholder. Add one object per event, newest anywhere — the site sorts by date.",
+    "cover": "",
+    "drive": "https://drive.google.com/"
+  }
+]

@@ -61,7 +61,7 @@ function eventCard(ev) {
   return reveal(card);
 }
 
-function featuredCard(ev) {
+function featuredCard(ev, labelText) {
   const card = document.createElement("a");
   card.className = "featured-card";
   card.href = ev.drive;
@@ -81,7 +81,7 @@ function featuredCard(ev) {
 
   const label = document.createElement("span");
   label.className = "featured-label";
-  label.textContent = ev.club;
+  label.textContent = labelText || ev.club;
 
   const title = document.createElement("h3");
   title.textContent = ev.name;
@@ -140,6 +140,7 @@ function show(sectionId) {
 
 async function init() {
   const latestEl = document.getElementById("latest-events");
+  const bannerEl = document.getElementById("induction-banner");
   const featuredEl = document.getElementById("featured");
   const officialEl = document.getElementById("official-events");
   const clubEl = document.getElementById("club-events");
@@ -149,8 +150,19 @@ async function init() {
     try {
       const events = await loadJSON("data/events.json");
 
+      if (bannerEl) {
+        const hero = events.find((ev) => ev.featured === "hero");
+        if (hero) {
+          bannerEl.appendChild(featuredCard(hero, "Latest ★"));
+          show("banner-section");
+        }
+      }
+
       if (latestEl) {
-        events.slice(0, 3).forEach((ev) => latestEl.appendChild(eventCard(ev)));
+        events
+          .filter((ev) => ev.featured !== "hero")
+          .slice(0, 3)
+          .forEach((ev) => latestEl.appendChild(eventCard(ev)));
       }
 
       if (featuredEl) {

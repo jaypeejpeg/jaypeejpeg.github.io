@@ -74,7 +74,7 @@ img { max-width: 100%; display: block; }
   inset: 0;
   background:
     linear-gradient(180deg, rgba(14,14,16,0.55) 0%, rgba(14,14,16,0.35) 45%, var(--bg) 100%),
-    url("https://lh3.googleusercontent.com/d/1tV0JTkBZmycenhJrwp4S1obkKoNzBBMZ=w1920") center / cover no-repeat;
+    url("https://lh3.googleusercontent.com/d/1adcCc-C02QmGWnHyneXRUxmmccRmgHSR=w1920") center / cover no-repeat;
   animation: kenburns 18s ease-in-out infinite alternate;
 }
 

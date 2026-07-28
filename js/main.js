@@ -1,11 +1,30 @@
 // Renders events and team cards from the JSON files in /data.
+// events.json is ordered newest-first; rendering preserves array order.
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-function formatDate(iso) {
-  return new Date(iso + "T00:00:00").toLocaleDateString("en-IN", {
-    day: "numeric", month: "short", year: "numeric",
-  });
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const revealObserver = reduceMotion
+  ? null
+  : new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+function reveal(el) {
+  if (revealObserver) {
+    el.classList.add("reveal");
+    revealObserver.observe(el);
+  }
+  return el;
 }
 
 function eventCard(ev) {
@@ -22,13 +41,13 @@ function eventCard(ev) {
 
   const body = document.createElement("div");
   body.className = "card-body";
-  body.innerHTML = `
-    <span class="card-date">${formatDate(ev.date)}</span>
-    <h3></h3>
-    <p class="card-blurb"></p>
-  `;
-  body.querySelector("h3").textContent = ev.name;
-  body.querySelector(".card-blurb").textContent = ev.blurb || "";
+
+  const chip = document.createElement("span");
+  chip.className = "chip";
+  chip.textContent = ev.club;
+
+  const title = document.createElement("h3");
+  title.textContent = ev.name;
 
   const link = document.createElement("a");
   link.className = "btn";
@@ -36,10 +55,44 @@ function eventCard(ev) {
   link.target = "_blank";
   link.rel = "noopener";
   link.textContent = "View Photos";
-  body.appendChild(link);
 
+  body.append(chip, title, link);
   card.append(cover, body);
-  return card;
+  return reveal(card);
+}
+
+function featuredCard(ev) {
+  const card = document.createElement("a");
+  card.className = "featured-card";
+  card.href = ev.drive;
+  card.target = "_blank";
+  card.rel = "noopener";
+
+  if (ev.cover) {
+    card.appendChild(
+      Object.assign(document.createElement("img"), {
+        src: ev.cover, alt: ev.name, loading: "lazy",
+      })
+    );
+  }
+
+  const overlay = document.createElement("div");
+  overlay.className = "featured-overlay";
+
+  const label = document.createElement("span");
+  label.className = "featured-label";
+  label.textContent = ev.club;
+
+  const title = document.createElement("h3");
+  title.textContent = ev.name;
+
+  const cta = document.createElement("span");
+  cta.className = "btn";
+  cta.textContent = "View Photos →";
+
+  overlay.append(label, title, cta);
+  card.appendChild(overlay);
+  return reveal(card);
 }
 
 function teamCard(member) {
@@ -72,7 +125,7 @@ function teamCard(member) {
 
   body.append(role, name, contacts);
   card.append(photo, body);
-  return card;
+  return reveal(card);
 }
 
 async function loadJSON(path) {
@@ -81,19 +134,47 @@ async function loadJSON(path) {
   return res.json();
 }
 
+function show(sectionId) {
+  document.getElementById(sectionId).hidden = false;
+}
+
 async function init() {
-  const eventsEl = document.getElementById("events");
   const latestEl = document.getElementById("latest-events");
+  const featuredEl = document.getElementById("featured");
+  const officialEl = document.getElementById("official-events");
+  const clubEl = document.getElementById("club-events");
   const teamEl = document.getElementById("team");
 
-  if (eventsEl || latestEl) {
+  if (latestEl || featuredEl) {
     try {
-      const events = (await loadJSON("data/events.json"))
-        .sort((a, b) => b.date.localeCompare(a.date));
-      if (eventsEl) events.forEach((ev) => eventsEl.appendChild(eventCard(ev)));
-      if (latestEl) events.slice(0, 3).forEach((ev) => latestEl.appendChild(eventCard(ev)));
+      const events = await loadJSON("data/events.json");
+
+      if (latestEl) {
+        events.slice(0, 3).forEach((ev) => latestEl.appendChild(eventCard(ev)));
+      }
+
+      if (featuredEl) {
+        const highlight = events.find((ev) => ev.featured === "highlight");
+        if (highlight) {
+          featuredEl.appendChild(featuredCard(highlight));
+          show("featured-section");
+        }
+
+        const rest = events.filter((ev) => ev.featured !== "highlight");
+        const official = rest.filter((ev) => ev.category === "official");
+        const club = rest.filter((ev) => ev.category === "club");
+
+        if (official.length) {
+          official.forEach((ev) => officialEl.appendChild(eventCard(ev)));
+          show("official-section");
+        }
+        if (club.length) {
+          club.forEach((ev) => clubEl.appendChild(eventCard(ev)));
+          show("club-section");
+        }
+      }
     } catch {
-      const el = eventsEl || latestEl;
+      const el = featuredEl || latestEl;
       el.innerHTML = '<p class="empty-note">Events coming soon.</p>';
     }
   }

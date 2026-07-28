@@ -71,7 +71,7 @@ function featuredCard(ev, labelText) {
   if (ev.cover) {
     card.appendChild(
       Object.assign(document.createElement("img"), {
-        src: ev.cover, alt: ev.name, loading: "lazy",
+        src: ev.cover.replace("=w800", "=w1600"), alt: ev.name, loading: "lazy",
       })
     );
   }

@@ -1,18 +1,14 @@
 [
-  {
-    "name": "Sample Head",
-    "role": "President",
-    "photo": "",
-    "email": "someone@example.com",
-    "instagram": "",
-    "phone": ""
-  },
-  {
-    "name": "Another Head",
-    "role": "Vice President",
-    "photo": "",
-    "email": "",
-    "instagram": "https://instagram.com/example",
-    "phone": ""
-  }
+  { "name": "Eeshan", "role": "Senior Advisors", "photo": "", "instagram": "_.eeshan_", "phone": "+91 99104 23923" },
+  { "name": "Nandini Verma", "role": "Senior Advisors", "photo": "", "instagram": "my_bioscope", "phone": "+91 98106 49311" },
+  { "name": "Anoushka Kaushik", "role": "Senior Advisors", "photo": "", "instagram": "anoushkakaushik_111", "phone": "+91 99531 93922" },
+  { "name": "Saransh", "role": "Senior Advisors", "photo": "", "instagram": "saranshh_18", "phone": "+91 95994 68124" },
+  { "name": "Kushagr Rastogi", "role": "Management Heads", "photo": "", "instagram": "kushagra_lens", "phone": "+91 73071 88842" },
+  { "name": "Hrishita Raj Singh", "role": "Management Heads", "photo": "", "instagram": "shtter.n.soul", "phone": "+91 99115 39338" },
+  { "name": "Luv Tondon", "role": "Digital Heads", "photo": "", "instagram": "luv_tondon_", "phone": "+91 72520 14946" },
+  { "name": "Mahreen Dhillon", "role": "Digital Heads", "photo": "", "instagram": "mehreen_creates", "phone": "+91 85272 78264" },
+  { "name": "Arnav Mehta", "role": "Photography Heads", "photo": "", "instagram": "alt.clicks", "phone": "+91 88821 27230" },
+  { "name": "Anushka Mittal", "role": "Photography Heads", "photo": "", "instagram": "anushka4.jpg", "phone": "+91 79826 58156" },
+  { "name": "Aakarsh Mishra", "role": "Cinematography Heads", "photo": "", "instagram": "glitchh.am", "phone": "+91 7415 520 444" },
+  { "name": "Aryan Prasad", "role": "Cinematography Heads", "photo": "", "instagram": "_.clickers", "phone": "+91 94732 38907" }
 ]

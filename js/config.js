@@ -17,5 +17,5 @@
 // It cannot reach private files, and it cannot upload, edit or delete anything.
 
 window.JPEG_CONFIG = {
-  driveApiKey: "",
+  driveApiKey: "AIzaSyCYOX0VZBpO2BiEJHNSJIBcQHl9P86goxs",
 };

@@ -89,12 +89,13 @@ async function listFolder(folderId) {
     pageToken = page.nextPageToken || "";
   } while (pageToken);
 
-  // Folders prefixed with "_" stay private; anything that is not an image,
-  // video or folder is ignored entirely.
-  const visible = items.filter((f) => !f.name.startsWith("_"));
+  // Folders prefixed with "_" stay private. The rule deliberately does not
+  // apply to files: Canon names half its output _MG_1234.jpg.
+  // Anything that is not an image, video or folder is ignored entirely.
+  const isFolder = (f) => f.mimeType === "application/vnd.google-apps.folder";
   const data = {
-    folders: visible.filter((f) => f.mimeType === "application/vnd.google-apps.folder"),
-    files: visible.filter(
+    folders: items.filter((f) => isFolder(f) && !f.name.startsWith("_")),
+    files: items.filter(
       (f) => f.mimeType.startsWith("image/") || f.mimeType.startsWith("video/")
     ),
   };

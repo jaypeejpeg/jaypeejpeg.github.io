@@ -118,6 +118,52 @@ function iconLink(href, icon, label) {
   return a;
 }
 
+function hitRow(ev, position) {
+  const row = document.createElement("article");
+  row.className = "hit";
+
+  const media = document.createElement("a");
+  media.className = "hit-media";
+  media.href = ev.drive;
+  media.target = "_blank";
+  media.rel = "noopener";
+  media.setAttribute("aria-label", `${ev.name} photos`);
+
+  if (ev.cover) {
+    media.appendChild(
+      Object.assign(document.createElement("img"), {
+        src: ev.cover.replace("=w800", "=w1200"), alt: ev.name, loading: "lazy",
+      })
+    );
+  }
+
+  const text = document.createElement("div");
+  text.className = "hit-text";
+
+  const rank = document.createElement("span");
+  rank.className = "hit-rank";
+  rank.textContent = String(position).padStart(2, "0");
+
+  const chip = document.createElement("span");
+  chip.className = "chip";
+  chip.textContent = ev.club;
+
+  const title = document.createElement("h3");
+  title.className = "hit-title";
+  title.textContent = ev.name;
+
+  const link = document.createElement("a");
+  link.className = "btn";
+  link.href = ev.drive;
+  link.target = "_blank";
+  link.rel = "noopener";
+  link.textContent = "View Photos →";
+
+  text.append(rank, chip, title, link);
+  row.append(media, text);
+  return reveal(row);
+}
+
 function teamCard(member) {
   const card = document.createElement("article");
   card.className = "card";
@@ -161,14 +207,14 @@ function show(sectionId) {
 }
 
 async function init() {
-  const latestEl = document.getElementById("latest-events");
+  const hitsEl = document.getElementById("hits");
   const bannerEl = document.getElementById("induction-banner");
   const featuredEl = document.getElementById("featured");
   const officialEl = document.getElementById("official-events");
   const clubEl = document.getElementById("club-events");
   const teamEl = document.getElementById("team");
 
-  if (latestEl || featuredEl) {
+  if (hitsEl || featuredEl) {
     try {
       const events = await loadJSON("data/events.json");
 
@@ -180,11 +226,11 @@ async function init() {
         }
       }
 
-      if (latestEl) {
+      if (hitsEl) {
         events
-          .filter((ev) => ev.featured !== "hero")
-          .slice(0, 3)
-          .forEach((ev) => latestEl.appendChild(eventCard(ev)));
+          .filter((ev) => ev.rank)
+          .sort((a, b) => a.rank - b.rank)
+          .forEach((ev, i) => hitsEl.appendChild(hitRow(ev, i + 1)));
       }
 
       if (featuredEl) {
@@ -208,7 +254,7 @@ async function init() {
         }
       }
     } catch {
-      const el = featuredEl || latestEl;
+      const el = featuredEl || hitsEl;
       el.innerHTML = '<p class="empty-note">Events coming soon.</p>';
     }
   }

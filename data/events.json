@@ -34,7 +34,16 @@
     "category": "club",
     "drive": "https://drive.google.com/drive/folders/1Sl7JFKvN1KrVejVSlek3txemEs2EPjDt",
     "cover": "https://lh3.googleusercontent.com/d/1-FPdGAdzqe9MXvuo2g23g3QmN1n-yI40=w800",
-    "featured": "highlight"
+    "featured": "highlight",
+    "rank": 1
+  },
+  {
+    "name": "Unplugged 26",
+    "club": "Crescendo",
+    "category": "club",
+    "drive": "https://drive.google.com/drive/folders/1OfMde_dbTtAXQDYAGqRLyUZYtprysGba",
+    "cover": "https://lh3.googleusercontent.com/d/1SxXflerDn5tvfsv1w062xn3rTVEg0E6b=w800",
+    "rank": 4
   },
   {
     "name": "KPH Encode 26.1",
@@ -90,7 +99,8 @@
     "club": "JPEG × Radiance",
     "category": "club",
     "drive": "https://drive.google.com/drive/folders/17taBUcDlwcAWnoP7nKgh4qaoYuEuAk1y",
-    "cover": "https://lh3.googleusercontent.com/d/172GOvHv_r4hUxbEMUSrhg7wjexsO5uef=w800"
+    "cover": "https://lh3.googleusercontent.com/d/172GOvHv_r4hUxbEMUSrhg7wjexsO5uef=w800",
+    "rank": 5
   },
   {
     "name": "ICPC 25",
@@ -132,6 +142,7 @@
     "club": "JYC",
     "category": "club",
     "drive": "https://drive.google.com/drive/folders/1kSmrnuUm0tGzy33IBibeSc7NvOlCa8JI",
-    "cover": "https://lh3.googleusercontent.com/d/1pGS01uCTr0_wFL-nrWsxFB72y1OmK7-y=w800"
+    "cover": "https://lh3.googleusercontent.com/d/1pGS01uCTr0_wFL-nrWsxFB72y1OmK7-y=w800",
+    "rank": 2
   }
 ]

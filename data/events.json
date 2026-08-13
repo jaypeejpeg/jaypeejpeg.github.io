@@ -5,15 +5,14 @@
     "category": "official",
     "drive": "https://drive.google.com/drive/folders/1d5uINvXMPYgDrVHOUBrjFXHq2FUsnFje",
     "cover": "https://lh3.googleusercontent.com/d/1Y39M_BNFx1Za6ji9AuacYA_56M26pp0j=w800",
-    "rank": 1
+    "featured": "hero"
   },
   {
     "name": "Induction 2026",
     "club": "Official",
     "category": "official",
     "drive": "https://drive.google.com/drive/folders/1vFGAHNrX1Ec1QLPV-T_hNL8jUDX1vfjU",
-    "cover": "https://lh3.googleusercontent.com/d/1nfGWpwRbQhS9VRWWlQUnmnKa9A8PHzRm=w800",
-    "featured": "hero"
+    "cover": "https://lh3.googleusercontent.com/d/1nfGWpwRbQhS9VRWWlQUnmnKa9A8PHzRm=w800"
   },
   {
     "name": "Farewell",
@@ -43,7 +42,7 @@
     "drive": "https://drive.google.com/drive/folders/1Sl7JFKvN1KrVejVSlek3txemEs2EPjDt",
     "cover": "https://lh3.googleusercontent.com/d/1-FPdGAdzqe9MXvuo2g23g3QmN1n-yI40=w800",
     "featured": "highlight",
-    "rank": 2
+    "rank": 1
   },
   {
     "name": "Unplugged 26",
@@ -107,7 +106,8 @@
     "club": "JPEG × Radiance",
     "category": "club",
     "drive": "https://drive.google.com/drive/folders/17taBUcDlwcAWnoP7nKgh4qaoYuEuAk1y",
-    "cover": "https://lh3.googleusercontent.com/d/172GOvHv_r4hUxbEMUSrhg7wjexsO5uef=w800"
+    "cover": "https://lh3.googleusercontent.com/d/172GOvHv_r4hUxbEMUSrhg7wjexsO5uef=w800",
+    "rank": 5
   },
   {
     "name": "ICPC 25",
@@ -150,6 +150,6 @@
     "category": "club",
     "drive": "https://drive.google.com/drive/folders/1kSmrnuUm0tGzy33IBibeSc7NvOlCa8JI",
     "cover": "https://lh3.googleusercontent.com/d/1pGS01uCTr0_wFL-nrWsxFB72y1OmK7-y=w800",
-    "rank": 3
+    "rank": 2
   }
 ]

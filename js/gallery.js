@@ -1,6 +1,7 @@
 // Browses a public Drive folder: albums, photo grid and a full-screen viewer.
 
-document.getElementById("year").textContent = new Date().getFullYear();
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 const els = {
   crumbs: document.getElementById("breadcrumb"),

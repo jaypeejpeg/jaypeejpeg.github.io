@@ -1,7 +1,8 @@
 // Renders events and team cards from the JSON files in /data.
 // events.json is ordered newest-first; rendering preserves array order.
 
-document.getElementById("year").textContent = new Date().getFullYear();
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -210,7 +211,7 @@ function show(sectionId) {
 
 async function init() {
   const hitsEl = document.getElementById("hits");
-  const bannerEl = document.getElementById("induction-banner");
+  const bannerEl = document.getElementById("latest-banner");
   const featuredEl = document.getElementById("featured");
   const officialEl = document.getElementById("official-events");
   const clubEl = document.getElementById("club-events");

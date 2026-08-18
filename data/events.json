@@ -1,11 +1,18 @@
 [
   {
+    "name": "Ebullience 2026",
+    "club": "JYC × Radiance",
+    "category": "official",
+    "drive": "https://drive.google.com/drive/folders/1tzszLL0ITaUjM5PP5sDFH2JoEOUEQg6k",
+    "cover": "https://lh3.googleusercontent.com/d/19X6zt7TK3j0RKu5oZM0MP8c1JrQpDfXj=w800",
+    "featured": "hero"
+  },
+  {
     "name": "IC3",
     "club": "Dept. of Computer Science",
     "category": "official",
     "drive": "https://drive.google.com/drive/folders/1d5uINvXMPYgDrVHOUBrjFXHq2FUsnFje",
-    "cover": "https://lh3.googleusercontent.com/d/1JGemxvsGj_Bobl1KGtKRHweDoVhA7Xx9=w800",
-    "featured": "hero"
+    "cover": "https://lh3.googleusercontent.com/d/1JGemxvsGj_Bobl1KGtKRHweDoVhA7Xx9=w800"
   },
   {
     "name": "Induction 2026",

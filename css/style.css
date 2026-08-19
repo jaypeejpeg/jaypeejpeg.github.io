@@ -477,8 +477,10 @@ img.card-cover { object-fit: cover; width: 100%; }
 /* Team */
 .team-grid { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
 
+/* The initials fallback has no image to size it, so it borrows the portrait
+   shape of the team cards to keep grid rows level. */
 .team-photo {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 3 / 4;
   background: repeating-linear-gradient(45deg, #1c1c1c 0 12px, #131313 12px 24px);
   display: flex;
   align-items: center;
@@ -487,7 +489,16 @@ img.card-cover { object-fit: cover; width: 100%; }
   font-size: 3rem;
   border-bottom: var(--bw) solid var(--border);
 }
-img.team-photo { object-fit: cover; width: 100%; }
+
+/* Real photos keep their own proportions. The team cards have the member's
+   name and role set into the artwork, so any crop would cut it off. */
+img.team-photo {
+  aspect-ratio: auto;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
 
 .team-initials {
   font-family: "Archivo Black", "Arial Black", sans-serif;

@@ -1,11 +1,18 @@
 [
   {
+    "name": "Techblocks 12.1",
+    "club": "IEEE",
+    "category": "club",
+    "drive": "https://drive.google.com/drive/folders/1gMggjx4nI7gGAQLJtz0noC5s7IEnl7lU",
+    "cover": "https://lh3.googleusercontent.com/d/1fXhLJC-RO7OitLMKHEObg71xZYLNLGJX=w800",
+    "featured": "hero"
+  },
+  {
     "name": "VDAT 26",
     "club": "Official",
     "category": "official",
     "drive": "https://drive.google.com/drive/folders/1N5fmbDnYjLA3yjHXG3pT7MIW-74F4bt3",
-    "cover": "https://lh3.googleusercontent.com/d/1KiTqSBIW1OAFy9TRgkgWyANstAcIxF8W=w800",
-    "featured": "hero"
+    "cover": "https://lh3.googleusercontent.com/d/1KiTqSBIW1OAFy9TRgkgWyANstAcIxF8W=w800"
   },
   {
     "name": "Anti Ragging Week 26",

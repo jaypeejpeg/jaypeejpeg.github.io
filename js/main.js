@@ -226,12 +226,18 @@ async function init() {
         if (hero) {
           bannerEl.appendChild(featuredCard(hero, "Latest ★"));
           show("banner-section");
+        }
 
-          // The hero button is written into the HTML pointing at Drive; send it
-          // to the on-site gallery once that is available.
-          const cta = document.getElementById("hero-cta");
-          if (cta && DRIVE.enabled()) {
-            cta.href = photosUrl(hero.drive, hero.name);
+        // The hero button is written into the HTML pointing at Drive; send it
+        // to the on-site gallery once that is available. Which event it
+        // promotes is the markup's call, not the hero's: the two are allowed
+        // to differ. An unknown folder keeps the plain Drive link.
+        const cta = document.getElementById("hero-cta");
+        if (cta && DRIVE.enabled()) {
+          const wanted = folderIdFrom(cta.getAttribute("href"));
+          const target = events.find((ev) => folderIdFrom(ev.drive) === wanted);
+          if (target) {
+            cta.href = photosUrl(target.drive, target.name);
             cta.removeAttribute("target");
             cta.removeAttribute("rel");
           }
